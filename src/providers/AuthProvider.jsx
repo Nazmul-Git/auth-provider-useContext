@@ -3,9 +3,9 @@ import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWith
 import app from "../Firebase/firebaese.config";
 
 export const AuthContext = createContext(null);
-
 // eslint-disable-next-line no-unused-vars
 const auth = getAuth(app);
+
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({children}) => {
     // eslint-disable-next-line no-unused-vars
