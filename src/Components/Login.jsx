@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../providers/authProvider';
 
 const Login = () => {
-    const {user, signInUser }= useContext(AuthContext);
+    const {user, signInUser,signInWithGoogle }= useContext(AuthContext);
     console.log(user, signInUser);
 
     const userLogIn=(event)=>{
@@ -25,6 +25,17 @@ const Login = () => {
         })
 
 
+    }
+
+    const handleGoogleSignIn=()=>{
+        signInWithGoogle()
+        .then(result=>{
+            const loggedUser=result.user;
+            console.log(loggedUser);
+        })
+        .catch(error=>{
+            console.error(error);
+        })
     }
     return (
             <div className="hero min-h-screen bg-base-200">
@@ -55,6 +66,9 @@ const Login = () => {
                         </form>
                         
                         <Link to="/register" className='btn btn-link text-white'><small>Are you new in site ?</small>Register now</Link>
+                        <div className=' text-center mb-4'>
+                            <button onClick={handleGoogleSignIn} className='btn btn-success'> Sign in with Google</button>
+                        </div>
                     </div>
                     
                 </div>
